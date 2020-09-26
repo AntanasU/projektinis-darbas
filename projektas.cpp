@@ -11,58 +11,66 @@ using std::string;
 using std::vector;
 using std::endl;
 
-struct duomuo {
-    string Vard;
-    string Pav;
-    int paz[10];
-    int egz;
-    float GP=0;
+struct studentas {
+    string Vard = "", Pav = "";
+    int paz[10], egz;
+    float GP = 0, med;
 };
 
 int main()
 {
-    duomuo Eil; duomuo Eil_mas[5];
-    vector <duomuo> Eil_vect;
-    cout << "sveiki iveskite Eil duomenis: (vardas, pavarde, egzaminas, 5 semestro pazymiai)\n";
-    cin >> Eil.Vard >> Eil.Pav >> Eil.egz;
-    for (int i = 0; i < 5; i++) {
-        cin >> Eil.paz[i];
-        Eil.GP = Eil.GP + (float)Eil.paz[i];
+    cout << "iveskite studentu skaiciu: ";
+    int kiekis = 0;
+    cin >> kiekis;
+    while (kiekis < 1) {
+        cout << "ivestas netinkamas skaicius, iveskite kita skaiciu ";
+        cin >> kiekis;
+    }
+
+    studentas* Grupe_mas = new studentas[kiekis];
+
+    for (int k = 0; k < kiekis; k++) {
+
+        cout << "\n iveskite studendo varda: ";
+        cin >> Grupe_mas[k].Vard;
+        cout << " iveskite studendo pavarde: ";
+        cin >> Grupe_mas[k].Pav;
+        cout << " iveskite studendo egzamino pazymi: ";
+        cin >> Grupe_mas[k].egz;
+        while (Grupe_mas[k].egz > 10 || Grupe_mas[k].egz < 1) {
+            cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+            cin >> Grupe_mas[k].egz;
+        }
+        int n;
+        cout << "iveskite kiek pazymiu gavo studentas ";
+        cin >> n;
+        while (n < 1) {
+            cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+            cin >> n;
+        }
+        cout << "\n iveskite studendo " << n << " semestro pazymius: ";
+        for (int i = 0; i < n; i++) {
+            cin >> Grupe_mas[k].paz[i];
+            while (Grupe_mas[k].paz[i] > 10 || Grupe_mas[k].paz[i] < 1) {
+                cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+                cin >> Grupe_mas[k].paz[i];
+            }
+            Grupe_mas[k].GP = Grupe_mas[k].GP + (float)Grupe_mas[k].paz[i];
+        }
+
+        Grupe_mas[k].GP = (float)Grupe_mas[k].GP / n;
+        Grupe_mas[k].GP = Grupe_mas[k].GP * 0.4 + 0.6 * Grupe_mas[k].egz;
+    }
+
+    cout << "vardas   pavarde    galutinis pazymys / mediana" << endl;
+    cout << "-----------------------------------------------" << endl;
+
+    for (int j = 0; j < kiekis; j++) {
+
+        cout << Grupe_mas[j].Vard << "  " << Grupe_mas[j].Pav;
+        cout << "        " << Grupe_mas[j].GP << endl;
 
     }
-    Eil.GP = (float)Eil.GP / 5.0;
-    Eil.GP = Eil.GP * 0.4 + 0.6 * Eil.egz;
-    cout << "ivesta: " << Eil.Vard << " " << Eil.Pav << " " << Eil.egz;
-    for (int i = 0; i < 5; i++) cout << " " << Eil.paz[i];
-    cout << " " << Eil.GP << endl;
-
-    Eil_vect.push_back(Eil); // su indeksu 0
-    Eil_vect.push_back(Eil); // su indeksu 1
-
-    Eil_vect[1].GP = 25;
-
-    cout << endl<<endl;
-
-    for (int j = 0; j < 2; j++) {
-
-        cout << "ivesta: " << Eil_vect[j].Vard << " " << Eil_vect[j].Pav << " " << Eil_vect[j].egz;
-        for (int i = 0; i < 5; i++) cout << " " << Eil_vect[j].paz[i];
-        cout << " " << Eil_vect[j].GP << endl;
-
-
-    }        
     char a;
     cin >> a;
-    Eil_vect.clear();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
