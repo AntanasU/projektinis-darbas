@@ -57,7 +57,6 @@ int main()
             }
             Grupe_mas[k].GP = Grupe_mas[k].GP + (float)Grupe_mas[k].paz[i];
         }
-
         Grupe_mas[k].GP = (float)Grupe_mas[k].GP / n;
         Grupe_mas[k].GP = Grupe_mas[k].GP * 0.4 + 0.6 * Grupe_mas[k].egz;
     }
