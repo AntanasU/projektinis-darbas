@@ -69,8 +69,8 @@ int main()
 		grupe.push_back(stud);
 
 	}
-	cout << std::left<< setw(20) << "vardas" << setw(20) << "pavarde"<< setw(20)<<"galutinis"<<"mediana \n";
-	cout << "-------------------------------------------------------------\n";
+	cout << std::left<< setw(20) << "vardas" << setw(20) << "pavarde"<< "galutinis          mediana \n";
+	cout << "-------------------------------------------------------------------\n";
 
 	for (auto& tt : grupe) {
 		cout << setw(20)<<tt.Vard << setw(20) << tt.Pav

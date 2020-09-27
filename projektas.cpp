@@ -27,10 +27,6 @@ int main()
     cout << "iveskite studentu skaiciu: ";
     int kiekis = 0;
     cin >> kiekis;
-    while (kiekis < 1) {
-        cout << "ivestas netinkamas skaicius, iveskite kita skaiciu ";
-        cin >> kiekis;
-    }
 
     studentas* Grupe_mas = new studentas[kiekis];
 
@@ -75,8 +71,8 @@ int main()
         Grupe_mas[k].GP = Grupe_mas[k].GP * 0.4 + 0.6 * Grupe_mas[k].egz;
     }
 
-    cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis \n";
-    cout << "-------------------------------------------------------------\n";
+    cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis        mediana \n";
+    cout << "----------------------------------------------------------------\n";
 
     for (int i = 0; i < kiekis; i++) {
         cout << setw(20) << Grupe_mas[i].Vard << setw(20) << Grupe_mas[i].Pav
