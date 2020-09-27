@@ -18,7 +18,7 @@ using std::fixed;
 
 struct studentas {
     string Vard = "", Pav = "";
-    int paz[10], egz;
+    int paz[30], egz;
     float GP = 0, med;
 };
 
@@ -36,12 +36,15 @@ int main()
         cin >> Grupe_mas[k].Vard;
         cout << " iveskite studendo pavarde: ";
         cin >> Grupe_mas[k].Pav;
-        cout << " iveskite studendo egzamino pazymi: ";
-        cin >> Grupe_mas[k].egz;
-        while (Grupe_mas[k].egz > 10 || Grupe_mas[k].egz < 1) {
-            cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-            cin >> Grupe_mas[k].egz;
-        }
+        //cout << " iveskite studendo egzamino pazymi: ";
+        //cin >> Grupe_mas[k].egz;
+        //while (Grupe_mas[k].egz > 10 || Grupe_mas[k].egz < 1) {
+        //    cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+        //    cin >> Grupe_mas[k].egz;
+        //}
+        cout << "egzamino pazimys: ";
+        Grupe_mas[k].egz = 1 + (rand() % 10);
+        cout << Grupe_mas[k].egz<<"\n";
         int n;
         cout << "iveskite kiek pazymiu gavo studentas ";
         cin >> n;
@@ -49,15 +52,18 @@ int main()
             cout << "irasete netinkamus duomenis, pabandykite dar karta ";
             cin >> n;
         }
-        cout << "\n iveskite studendo " << n << " semestro pazymius: \n";
+        //cout << "\n iveskite studendo " << n << " semestro pazymius: \n";
         for (int i = 0; i < n; i++) {
-            cin >> Grupe_mas[k].paz[i];
-            while (Grupe_mas[k].paz[i] > 10 || Grupe_mas[k].paz[i] < 1) {
-                cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-                cin >> Grupe_mas[k].paz[i];
-            }
+            //cin >> Grupe_mas[k].paz[i];
+            //while (Grupe_mas[k].paz[i] > 10 || Grupe_mas[k].paz[i] < 1) {
+            //    cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+            //    cin >> Grupe_mas[k].paz[i];
+            //}
+            Grupe_mas[k].paz[i] = 1 + (rand() % 10);
+            cout << Grupe_mas[k].paz[i] << " ";
             Grupe_mas[k].GP = Grupe_mas[k].GP + (float)Grupe_mas[k].paz[i];
         }
+        cout << "\n";
         std::sort(Grupe_mas[k].paz, Grupe_mas[k].paz + n);
         if (n % 2 == 0)
             Grupe_mas[k].med = (Grupe_mas[k].paz[n / 2 - 1] + Grupe_mas[k].paz[n / 2]) / 2;
@@ -71,7 +77,7 @@ int main()
         Grupe_mas[k].GP = Grupe_mas[k].GP * 0.4 + 0.6 * Grupe_mas[k].egz;
     }
 
-    cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis        mediana \n";
+    cout <<"\n"<< std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis        mediana \n";
     cout << "----------------------------------------------------------------\n";
 
     for (int i = 0; i < kiekis; i++) {

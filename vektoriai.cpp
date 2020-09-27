@@ -6,6 +6,7 @@
 #include <vector>
 #include<algorithm>
 #include<iomanip>
+#include<random>
 
 using std::cout;
 using std::cin;
@@ -15,10 +16,11 @@ using std::endl;
 using std::setw;
 using std::setprecision;
 using std::fixed;
+using std::rand;
 
 struct studentas {
     string Vard = "", Pav = "";
-    int paz[10], egz;
+    int paz[30], egz;
     float GP = 0, med;
 };
 
@@ -35,27 +37,33 @@ int main()
 		cin >> stud.Vard;
 		cout << "pavarde: ";
 		cin >> stud.Pav;
-		cout << "egzamino pazymi: ";
-		cin >> stud.egz;
-		while (stud.egz > 10 || stud.egz < 1) {								//patikrina ar geri skaiciai
-			cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-			cin >> stud.egz;
-		}
+		//cout << "egzamino pazymi: ";
+		//cin >> stud.egz;
+		cout << "egzamino pazimys: ";
+		stud.egz = 1 + (rand() % 10);
+		cout << stud.egz<<"\n";
+
+		//while (stud.egz > 10 || stud.egz < 1) {								//patikrina ar geri skaiciai
+		//	cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+		//	cin >> stud.egz;
+		//}
 		cout << "kiek studentas gavo pazymiu: ";
 		int m;
 		cin >> m;
 
 		if (m != 0) cout << "ivestkie pazymius: \n";
 		for (int i = 0; i < m; i++) {
-			cin >> stud.paz[i];
+			//cin >> stud.paz[i];
 
-			while (stud.paz[i] > 10 || stud.paz[i] < 1) {
-				cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-				cin >> stud.paz[i];
-			}
+			//while (stud.paz[i] > 10 || stud.paz[i] < 1) {
+				//cout << "irasete netinkamus duomenis, pabandykite dar karta ";
+				//cin >> stud.paz[i];
+			//}
+			stud.paz[i] = 1 + (rand() % 10);
+			cout << stud.paz[i] << "  ";
 			stud.GP = stud.GP + stud.paz[i];
 		}
-
+		cout << "\n";
 		std::sort(stud.paz, stud.paz+m);
 		if (m % 2 == 0)
 			stud.med = (stud.paz[m / 2 - 1] + stud.paz[m / 2]) / 2;
