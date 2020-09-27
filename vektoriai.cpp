@@ -4,17 +4,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<algorithm>
+#include<iomanip>
 
 using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
 using std::endl;
+using std::setw;
+using std::setprecision;
+using std::fixed;
 
 struct studentas {
     string Vard = "", Pav = "";
     int paz[10], egz;
-    float GP = 0;
+    float GP = 0, med;
 };
 
 int main()
@@ -51,14 +56,26 @@ int main()
 			stud.GP = stud.GP + stud.paz[i];
 		}
 
-	stud.GP = stud.GP / m;
-	stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
-	grupe.push_back(stud);
+		std::sort(stud.paz, stud.paz+m);
+		if (m % 2 == 0)
+			stud.med = (stud.paz[m / 2 - 1] + stud.paz[m / 2]) / 2;
+		else {
+			int laik = m / 2 + 0.5;
+			stud.med = stud.paz[laik];
+		}
+
+		stud.GP = stud.GP / m;
+		stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
+		grupe.push_back(stud);
 
 	}
+	cout << std::left<< setw(20) << "vardas" << setw(20) << "pavarde"<< setw(20)<<"galutinis"<<"mediana \n";
+	cout << "-------------------------------------------------------------\n";
 
 	for (auto& tt : grupe) {
-		cout << tt.Vard << " : "<<tt.Pav<<" : "<<tt.GP<<"\n";
+		cout << setw(20)<<tt.Vard << setw(20) << tt.Pav
+			<< setw(20) << setprecision(2) << fixed << tt.GP 
+			<< setw(20) << setprecision(2) << fixed <<tt.med<< "\n";
 	}
 
 		cout << endl;

@@ -4,12 +4,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<algorithm>
+#include<iomanip>
 
 using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
 using std::endl;
+using std::setw;
+using std::setprecision;
+using std::fixed;
 
 struct studentas {
     string Vard = "", Pav = "";
@@ -48,7 +53,7 @@ int main()
             cout << "irasete netinkamus duomenis, pabandykite dar karta ";
             cin >> n;
         }
-        cout << "\n iveskite studendo " << n << " semestro pazymius: ";
+        cout << "\n iveskite studendo " << n << " semestro pazymius: \n";
         for (int i = 0; i < n; i++) {
             cin >> Grupe_mas[k].paz[i];
             while (Grupe_mas[k].paz[i] > 10 || Grupe_mas[k].paz[i] < 1) {
@@ -57,17 +62,26 @@ int main()
             }
             Grupe_mas[k].GP = Grupe_mas[k].GP + (float)Grupe_mas[k].paz[i];
         }
+        std::sort(Grupe_mas[k].paz, Grupe_mas[k].paz + n);
+        if (n % 2 == 0)
+            Grupe_mas[k].med = (Grupe_mas[k].paz[n / 2 - 1] + Grupe_mas[k].paz[n / 2]) / 2;
+        else {
+            int laik = n / 2 + 0.5;
+            Grupe_mas[k].med = Grupe_mas[k].paz[laik];
+
+        }
+
         Grupe_mas[k].GP = (float)Grupe_mas[k].GP / n;
         Grupe_mas[k].GP = Grupe_mas[k].GP * 0.4 + 0.6 * Grupe_mas[k].egz;
     }
 
-    cout << "vardas   pavarde    galutinis pazymys / mediana" << endl;
-    cout << "-----------------------------------------------" << endl;
+    cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis \n";
+    cout << "-------------------------------------------------------------\n";
 
-    for (int j = 0; j < kiekis; j++) {
-
-        cout << Grupe_mas[j].Vard << "  " << Grupe_mas[j].Pav;
-        cout << "        " << Grupe_mas[j].GP << endl;
+    for (int i = 0; i < kiekis; i++) {
+        cout << setw(20) << Grupe_mas[i].Vard << setw(20) << Grupe_mas[i].Pav
+            << setw(20) << setprecision(2) << fixed << Grupe_mas[i].GP
+            << setw(20) << setprecision(2) << fixed << Grupe_mas[i].med << "\n";
 
     }
     char a;
