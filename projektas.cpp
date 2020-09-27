@@ -32,7 +32,7 @@ int main()
 
     for (int k = 0; k < kiekis; k++) {
 
-        cout << "\n iveskite studendo varda: ";
+        cout << "iveskite studendo varda: ";
         cin >> Grupe_mas[k].Vard;
         cout << " iveskite studendo pavarde: ";
         cin >> Grupe_mas[k].Pav;
@@ -60,11 +60,10 @@ int main()
             //    cin >> Grupe_mas[k].paz[i];
             //}
             Grupe_mas[k].paz[i] = 1 + (rand() % 10);
-            cout << Grupe_mas[k].paz[i] << " ";
             Grupe_mas[k].GP = Grupe_mas[k].GP + (float)Grupe_mas[k].paz[i];
         }
-        cout << "\n";
         std::sort(Grupe_mas[k].paz, Grupe_mas[k].paz + n);
+        for (int i = 0; i < n; i++) cout << Grupe_mas[k].paz[i] << " "; cout << "\n";
         if (n % 2 == 0)
             Grupe_mas[k].med = (Grupe_mas[k].paz[n / 2 - 1] + Grupe_mas[k].paz[n / 2]) / 2;
         else {

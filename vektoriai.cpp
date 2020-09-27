@@ -52,6 +52,7 @@ int main()
 		cin >> m;
 
 		if (m != 0) cout << "ivestkie pazymius: \n";
+		//stud.GP = 0;
 		for (int i = 0; i < m; i++) {
 			//cin >> stud.paz[i];
 
@@ -60,11 +61,10 @@ int main()
 				//cin >> stud.paz[i];
 			//}
 			stud.paz[i] = 1 + (rand() % 10);
-			cout << stud.paz[i] << "  ";
 			stud.GP = stud.GP + stud.paz[i];
 		}
-		cout << "\n";
 		std::sort(stud.paz, stud.paz+m);
+		for (int i = 0; i < m; i++)	cout << stud.paz[i] << "  "; cout << "\n";
 		if (m % 2 == 0)
 			stud.med = (stud.paz[m / 2 - 1] + stud.paz[m / 2]) / 2;
 		else {
