@@ -19,8 +19,8 @@ using std::fixed;
 using std::rand;
 
 struct studentas {
-    string Vard = "", Pav = "";
-    int paz[30], egz;
+    string Vard = "", Pav = "", isved="";
+    int nd[30], egz;
     float GP = 0, med;
 };
 
@@ -37,56 +37,49 @@ int main()
 		cin >> stud.Vard;
 		cout << "pavarde: ";
 		cin >> stud.Pav;
-		//cout << "egzamino pazymi: ";
-		//cin >> stud.egz;
 		cout << "egzamino pazimys: ";
 		stud.egz = 1 + (rand() % 10);
 		cout << stud.egz<<"\n";
 
-		//while (stud.egz > 10 || stud.egz < 1) {								//patikrina ar geri skaiciai
-		//	cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-		//	cin >> stud.egz;
-		//}
-		cout << "kiek studentas gavo pazymiu: ";
-		int m;
-		cin >> m;
-
-		if (m != 0) cout << "ivestkie pazymius: \n";
-		//stud.GP = 0;
-		for (int i = 0; i < m; i++) {
-			//cin >> stud.paz[i];
-
-			//while (stud.paz[i] > 10 || stud.paz[i] < 1) {
-				//cout << "irasete netinkamus duomenis, pabandykite dar karta ";
-				//cin >> stud.paz[i];
-			//}
-			stud.paz[i] = 1 + (rand() % 10);
-			stud.GP = stud.GP + stud.paz[i];
+		string x = "x";
+		cout << n + 1 << "-ojo studento nd pazymiai, kai noresite sustoti, irasykite 0: \n";
+		int j = 0;
+		while (x != "0") {
+			int a = 1 + rand() % 10;
+			cout << a << "		";
+			stud.nd[j]=a;
+			stud.GP = stud.GP + (float)stud.nd[j];
+			j++;
+			cin >> x;
 		}
-		std::sort(stud.paz, stud.paz+m);
-		for (int i = 0; i < m; i++)	cout << stud.paz[i] << "  "; cout << "\n";
-		if (m % 2 == 0)
-			stud.med = (stud.paz[m / 2 - 1] + stud.paz[m / 2]) / 2;
+		std::sort(stud.nd, stud.nd+j);
+		for (int i = 0; i < j; i++)	cout << stud.nd[i] << "  "; cout << "\n";
+		if (j % 2 == 0)
+			stud.med = ((float)stud.nd[j / 2 - 1] + (float)stud.nd[j / 2]) / 2;
 		else {
-			int laik = m / 2 + 0.5;
-			stud.med = stud.paz[laik];
+			int laik = j / 2 + 0.5;
+			stud.med = stud.nd[laik];
 		}
 
-		stud.GP = stud.GP / m;
+		stud.GP = stud.GP / j;
 		stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
+		cout << "ka norite kad isvestu galutini pazymi (0) ar mediana (bet koks kitas zenklas)? ";
+		string pasirinkimas;
+		cin >> pasirinkimas;
+		stud.isved = pasirinkimas;
 		grupe.push_back(stud);
 
 	}
+
 	cout << std::left<< setw(20) << "vardas" << setw(20) << "pavarde"<< "galutinis          mediana \n";
 	cout << "-------------------------------------------------------------------\n";
+	
+		for (auto& tt : grupe) {
+			cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
 
-	for (auto& tt : grupe) {
-		cout << setw(20)<<tt.Vard << setw(20) << tt.Pav
-			<< setw(20) << setprecision(2) << fixed << tt.GP 
-			<< setw(20) << setprecision(2) << fixed <<tt.med<< "\n";
+			if (tt.isved != "0") 	cout << setw(20) << "---" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
+			else   cout << setw(20) << setprecision(2) << fixed << tt.GP << "\n";
 	}
-
-		cout << endl;
 		grupe.clear();
 		char a;
 		cin >> a;
