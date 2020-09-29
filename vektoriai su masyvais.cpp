@@ -39,6 +39,7 @@ int main()
 	}
 	grupe.reserve(n);
 	for (int i = 0; i < n; i++) {
+		stud.GP = 0;
 		cout << "Iveskite " << i + 1 << "-aji varda: ";
 		cin >> stud.Vard;
 		cout << "pavarde: ";
@@ -75,6 +76,7 @@ int main()
 				cin >> egzaminas;
 			}
 			stud.egz = egzaminas;
+
 			cout << i + 1 << "-ojo studento nd pazymiai, kai noresite sustoti, irasykite 0: \n";
 			int x = 1;
 			cin >> x;
@@ -106,8 +108,9 @@ int main()
 			int laik = j / 2 + 0.5;
 			stud.med = stud.nd[laik];
 		}
-
+		cout << '\n ' << stud.GP;
 		stud.GP = stud.GP / j;
+		cout << '\n' << stud.GP<<'\n';
 		stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
 		cout << "ka norite kad isvestu galutini pazymi (0) ar mediana (bet koks kitas zenklas)? ";
 		string pasirinkimas;
