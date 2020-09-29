@@ -40,27 +40,61 @@ int main()
 		cin >> n;
 	}
 	grupe.reserve(n);
-	for (int i = 0; i < n; i++) {						//ivedimas
+	for (int i = 0; i < n; i++) {		
+		stud.nd.reserve(20);
 		cout << "Iveskite " << i + 1 << "-aji varda: ";
 		cin >> stud.Vard;
 		cout << "pavarde: ";
 		cin >> stud.Pav;
-		cout << "egzamino pazimys: ";
-		stud.egz = 1 + rand() % 10;
-		cout << stud.egz << "\n";
-		stud.nd.reserve(20);
-		string x = "x";
+		string generuoja;
+		cout << "jei norite ivesti pazymius pats spauskite 0 , jei nenorite spauskite bet kuri kita mygtuka  ";
+		cin >> generuoja;
+		if (generuoja != "0") {
+			cout << "egzamino pazimys: ";
+			stud.egz = 1 + rand() % 10;
+			cout << stud.egz << "\n";
+			string x = "x";
 			cout << i + 1 << "-ojo studento nd pazymiai, kai noresite sustoti, irasykite 0: \n";
 
-
-		while (x != "0") {
-			int a = 1 + rand() % 10;
-			cout << a << "		";
-			stud.nd.push_back(a);
+			while (x != "0") {
+				int a = 1 + rand() % 10;
+				cout << a << "		";
+				stud.nd.push_back(a);
+				cin >> x;
+			}
+		}
+		else {
+			cout << "egzamino pazimys: ";
+			int egzaminas;
+			cin >> egzaminas;
+			while (cin.fail() || egzaminas < 1 || egzaminas>10) {
+				cout << "klaida, iveskite skaiciu ne didesni uz 10  ";
+				cin.clear();
+				cin.ignore(256, '\n');
+				cin >> egzaminas;
+			}
+			stud.egz = egzaminas;
+			cout << i + 1 << "-ojo studento nd pazymiai, kai noresite sustoti, irasykite 0: \n";
+			int x = 1;
 			cin >> x;
+			while (cin.fail() || x < 0 || x>10) {
+				cout << "klaida, iveskite teigiama skaiciu, mazesni uz 10 (arba 0) ";
+				cin.clear();
+				cin.ignore(256, '\n');
+				cin >> x;
+			}
+			while (x != 0) {
+				stud.nd.push_back(x);
+				cin >> x;
+				while (cin.fail() || x < 0 || x>10) {
+					cout << "klaida, iveskite teigiama skaiciu, mazesni uz 10 (arba 0) ";
+					cin.clear();
+					cin.ignore(256, '\n');
+					cin >> x;
+				}
+			}
 		}
 		std::sort(stud.nd.begin(), stud.nd.end());
-
 		int c;
 		c = stud.nd.size();
 		if ( c % 2 != 0)	stud.med = stud.nd[c / 2 + 0.5];
