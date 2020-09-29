@@ -31,6 +31,12 @@ int main()
 	cout << "iveskite studentu skaiciu: ";
 	int n;
 	cin >> n;
+	while (cin.fail()) {
+		cout << "klaida, iveskite skaiciu  ";
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> n;
+	}
 	grupe.reserve(n);
 	for (int i = 0; i < n; i++) {						//ivedimas
 		cout << "Iveskite " << i + 1 << "-aji varda: ";
@@ -77,7 +83,7 @@ int main()
 		for (auto& tt : grupe) {
 			cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
 
-			if (tt.isved != "0") 	cout << setw(20) << "---" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
+			if (tt.isved != "0") 	cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
 			else   cout << setw(20) << setprecision(2) << fixed << tt.GP << "\n";
 	}
 		grupe.clear();
