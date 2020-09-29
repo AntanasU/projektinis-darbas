@@ -97,13 +97,17 @@ int main()
 		std::sort(stud.nd.begin(), stud.nd.end());
 		int c;
 		c = stud.nd.size();
-		if ( c % 2 != 0)	stud.med = stud.nd[c / 2 + 0.5];
-		else    			stud.med = ((float)stud.nd[c / 2 - 1] + (float)stud.nd[c / 2]) / 2;
-
-		float suma=0;
-		suma = accumulate(stud.nd.begin(), stud.nd.end(), 0);
-		float vid = suma / c;
-		stud.GP = vid  * 0.4 + 0.6 * stud.egz;
+		if (c != 0) {
+			if (c % 2 != 0)	stud.med = stud.nd[c / 2 + 0.5];
+			else    			stud.med = ((float)stud.nd[c / 2 - 1] + (float)stud.nd[c / 2]) / 2;
+		}
+		if (c == 0) stud.GP = 0.6 * stud.egz;
+		else {
+			float suma = 0;
+			suma = accumulate(stud.nd.begin(), stud.nd.end(), 0);
+			float vid = suma / c;
+			stud.GP = vid * 0.4 + 0.6 * stud.egz;
+		}
 		cout << "\n Jei noresite gauti galutini pazymi spauskite: 0 \n jei noresite gauti mediana: bet ka kita \n";
 		string ivestis;
 		cin >> ivestis;
@@ -117,7 +121,12 @@ int main()
 	for (auto& tt : grupe) {
 		cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
 				
-		if (tt.ivestis != "0")	cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
+		if (tt.ivestis != "0") { 
+			if(tt.nd.size()!=0)
+			cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << tt.med << "\n"; 
+			else 
+				cout << setw(20) << "----" << setw(20) << "nera" << "\n";
+		}
 		else 	cout << setw(20) << setprecision(2) << fixed << tt.GP << setw(20) << "----" << "\n";
 	}
 	cout << endl;

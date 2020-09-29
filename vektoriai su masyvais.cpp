@@ -108,10 +108,12 @@ int main()
 			int laik = j / 2 + 0.5;
 			stud.med = stud.nd[laik];
 		}
-		cout << '\n ' << stud.GP;
-		stud.GP = stud.GP / j;
-		cout << '\n' << stud.GP<<'\n';
-		stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
+		if (j == 0) stud.GP = 0.6 * stud.egz;
+		else {
+			stud.GP = stud.GP / j;
+			cout << '\n' << stud.GP << '\n';
+			stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
+		}
 		cout << "ka norite kad isvestu galutini pazymi (0) ar mediana (bet koks kitas zenklas)? ";
 		string pasirinkimas;
 		cin >> pasirinkimas;
