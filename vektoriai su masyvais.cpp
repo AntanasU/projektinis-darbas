@@ -19,9 +19,9 @@ using std::fixed;
 using std::rand;
 
 struct studentas {
-    string Vard = "", Pav = "", isved="";
-    int nd[30], egz;
-    float GP = 0, med;
+	string Vard = "", Pav = "", isved = "";
+	int nd[30], egz;
+	float GP = 0, med;
 };
 
 int main()
@@ -38,7 +38,7 @@ int main()
 		cin >> n;
 	}
 	grupe.reserve(n);
-	for (int i = 0; i < n; i++) {						
+	for (int i = 0; i < n; i++) {
 		cout << "Iveskite " << i + 1 << "-aji varda: ";
 		cin >> stud.Vard;
 		cout << "pavarde: ";
@@ -68,7 +68,7 @@ int main()
 			cout << "egzamino pazimys: ";
 			int egzaminas;
 			cin >> egzaminas;
-			while (cin.fail()||egzaminas<1||egzaminas>10) {
+			while (cin.fail() || egzaminas < 1 || egzaminas>10) {
 				cout << "klaida, iveskite skaiciu ne didesni uz 10  ";
 				cin.clear();
 				cin.ignore(256, '\n');
@@ -76,7 +76,7 @@ int main()
 			}
 			stud.egz = egzaminas;
 			cout << i + 1 << "-ojo studento nd pazymiai, kai noresite sustoti, irasykite 0: \n";
-			int x=1;
+			int x = 1;
 			cin >> x;
 			while (cin.fail() || x < 0 || x>10) {
 				cout << "klaida, iveskite teigiama skaiciu, mazesni uz 10 (arba 0) ";
@@ -89,7 +89,7 @@ int main()
 				stud.GP = stud.GP + (float)stud.nd[j];
 				j++;
 				cin >> x;
-				while (cin.fail()||x<0||x>10) {
+				while (cin.fail() || x < 0 || x>10) {
 					cout << "klaida, iveskite teigiama skaiciu, mazesni uz 10 (arba 0) ";
 					cin.clear();
 					cin.ignore(256, '\n');
@@ -98,7 +98,7 @@ int main()
 			}
 
 		}
-		std::sort(stud.nd, stud.nd+j);
+		std::sort(stud.nd, stud.nd + j);
 		for (int i = 0; i < j; i++)	cout << stud.nd[i] << "  "; cout << "\n";
 		if (j % 2 == 0)
 			stud.med = ((float)stud.nd[j / 2 - 1] + (float)stud.nd[j / 2]) / 2;
@@ -116,16 +116,16 @@ int main()
 		grupe.push_back(stud);
 	}
 
-	cout << std::left<< setw(20) << "vardas" << setw(20) << "pavarde"<< "galutinis          mediana \n";
+	cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis          mediana \n";
 	cout << "-------------------------------------------------------------------\n";
-	
-		for (auto& tt : grupe) {
-			cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
 
-			if (tt.isved != "0") 	cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
-			else   cout << setw(20) << setprecision(2) << fixed << tt.GP << "\n";
+	for (auto& tt : grupe) {
+		cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
+
+		if (tt.isved != "0") 	cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << tt.med << "\n";
+		else   cout << setw(20) << setprecision(2) << fixed << tt.GP << "\n";
 	}
-		grupe.clear();
-		char a;
-		cin >> a;
+	grupe.clear();
+	char a;
+	cin >> a;
 }
