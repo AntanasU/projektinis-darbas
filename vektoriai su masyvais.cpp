@@ -102,12 +102,14 @@ int main()
 		}
 		std::sort(stud.nd, stud.nd + j);
 		for (int i = 0; i < j; i++)	cout << stud.nd[i] << "  "; cout << "\n";
+		float mediana;
 		if (j % 2 == 0)
-			stud.med = ((float)stud.nd[j / 2 - 1] + (float)stud.nd[j / 2]) / 2;
+			mediana = ((float)stud.nd[j / 2 - 1] + (float)stud.nd[j / 2]) / 2;
 		else {
 			int laik = j / 2 + 0.5;
-			stud.med = stud.nd[laik];
+			mediana = stud.nd[laik];
 		}
+		stud.med = mediana * 0.4 + 0.6 * stud.egz;
 		if (j == 0) stud.GP = 0.6 * stud.egz;
 		else {
 			stud.GP = stud.GP / j;

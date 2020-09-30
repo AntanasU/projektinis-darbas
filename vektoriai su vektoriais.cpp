@@ -1,6 +1,3 @@
-// mano mas DB.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -97,10 +94,12 @@ int main()
 		std::sort(stud.nd.begin(), stud.nd.end());
 		int c;
 		c = stud.nd.size();
+		float mediana;
 		if (c != 0) {
-			if (c % 2 != 0)	stud.med = stud.nd[c / 2 + 0.5];
-			else    			stud.med = ((float)stud.nd[c / 2 - 1] + (float)stud.nd[c / 2]) / 2;
+			if (c % 2 != 0)	mediana = stud.nd[c / 2 + 0.5];
+			else    			mediana = ((float)stud.nd[c / 2 - 1] + (float)stud.nd[c / 2]) / 2;
 		}
+		stud.med = mediana * 0.4 + 0.6 * stud.egz;
 		if (c == 0) stud.GP = 0.6 * stud.egz;
 		else {
 			float suma = 0;
