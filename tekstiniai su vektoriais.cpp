@@ -141,8 +141,9 @@ int main()
 	}
 	else {
 	string pav = "";
-	cout << "Failo kuri norit nnuskaityti pavadinimas (pvz.: kursiokai.txt): ";
+	cout << "Failo kuri norit nuskaityti pavadinimas (jei jis kursiokai.txt galite tiesiog spausti 0): ";
 	cin >> pav;
+	if (pav == "0") pav = "kursiokai.txt";
 	std::ifstream file(pav);
 	if (file.good()) {
 		cout << "Failas surastas!" << endl;
