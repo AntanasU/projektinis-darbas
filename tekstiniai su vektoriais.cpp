@@ -102,7 +102,7 @@ int main()
 					}
 				}
 			}
-			std::sort(stud.nd.begin(), stud.nd.end());
+			sort(stud.nd.begin(), stud.nd.end());
 			int c;
 			c = stud.nd.size();
 			float mediana;
@@ -126,7 +126,7 @@ int main()
 			grupe.push_back(stud);
 			stud.nd.clear();
 		}
-		cout << std::left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis          mediana \n";
+		cout << left << setw(20) << "vardas" << setw(20) << "pavarde" << "galutinis          mediana \n";
 		cout << "-------------------------------------------------------------------\n";
 		for (auto& tt : grupe) {
 			cout << setw(20) << tt.Vard << setw(20) << tt.Pav;
@@ -142,87 +142,66 @@ int main()
 	}
 	else {
 	string pav = "";
+	string vardai, pavardes, temp, egzaminas;
+	vector<string> nd;
+	int m;
 	cout << "Failo kuri norit nuskaityti pavadinimas (jei jis kursiokai.txt galite tiesiog spausti 0): ";
 	cin >> pav;
 	if (pav == "0") pav = "kursiokai.txt";
 	ifstream file(pav);
 	if (file.good()) {
-		cout << "Failas surastas!" << endl;
-		int nd;
-		int kiekis = 0;
-		cout << "Kiek namu darbu pazymiu yra faile? : ";
-		cin >> kiekis;
-		while (cin.fail()) {
-			cout << "klaida, iveskite skaiciu:  ";
-			cin.clear();
-			cin.ignore(200, '\n');
-			cin >> kiekis;
+		file >> vardai >> pavardes >> temp;
+		while (temp != "Egz.") {
+			nd.push_back(temp);
+			file >> temp;
 		}
-		int h;
-		h = 100;
-		file.unsetf(std::ios_base::skipws);
-		int b = (count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n'))-1;
-		cout << "Studentu skaicius faile: " << b << endl;
-		ifstream file(pav);
-		file.ignore(10000, '\n');
-		for (int j = 0; j < b; j++) {
+		egzaminas = temp;
+		m = nd.size();
+		while (!file.eof()) {
+			studentas stud;
 			file >> stud.Vard >> stud.Pav;
-			for (int i = 0; i < kiekis; i++) {
-				file >> nd;
-				stud.nd.push_back(nd);
+			double studpaz;
+			for (int i = 0; i < m; i++) {
+				file >> studpaz;
+				stud.nd.push_back(studpaz);
 			}
 			file >> stud.egz;
-			sort(stud.nd.begin(), stud.nd.end());
-			int c;
-			c = stud.nd.size();
-			if (c != 0) {
-				if (c % 2 == 1)
-					stud.med = 0.4 * stud.nd[c / 2] + 0.6 * stud.egz;
+			if (m != 0) {
+				if (m % 2 == 1)
+					stud.med = 0.4 * stud.nd[m / 2] + 0.6 * stud.egz;
 				else
-					stud.med = (stud.nd[c / 2 - 1] + stud.nd[c / 2]) / 2 * 0.4 + 0.6 * stud.egz;
+					stud.med = (stud.nd[m / 2 - 1] + stud.nd[m / 2]) / 2 * 0.4 + 0.6 * stud.egz;
 			}
-			if (c == 0) {
+			if (m == 0) {
 				stud.GP = stud.egz * 0.6;
 			}
 			else {
 				float bendras = 0;
 				bendras = accumulate(stud.nd.begin(), stud.nd.end(), 0);
-				stud.GP = bendras / c;
+				stud.GP = bendras / m;
 				stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
 			}
 			grupe.push_back(stud);
 			stud.nd.clear();
 		}
 	}
+	
 	else cout << "Ivestas failas nebuvo rastas" << endl;
 	
-	std::sort(grupe.begin(), grupe.end(), Tvarkymas);
+	sort(grupe.begin(), grupe.end(), Tvarkymas);
 	string ivestis = "";
 	cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
 	cin >> ivestis;
 
-		cout << left
-			<< setw(20) << "Vardas "
-			<< setw(20) << "Pavarde"
-			<< setw(20)<<"Galutinis (vid) "
-			<<setw(20)<<"Galutinis (med)";
+		cout << left<< setw(20) << "Vardas "<< setw(20) << "Pavarde"
+			<< setw(20)<<"Galutinis (vid) " << setw(20)<< "Galutinis (med)";
 		cout << "\n-------------------------------------------------------------------------------\n";
 
-		if (ivestis == "0") {
-			for (auto& d : grupe) {
-				cout << left
-					<< setw(20) << d.Vard
-					<< setw(20) << d.Pav
-					<< setw(20) << setprecision(2) << fixed << d.GP 
-					<<"----\n";
-			}
-		}
-		else  {
-			for (auto& d : grupe) {
-				cout << left
-					<< setw(20) << d.Vard
-					<< setw(20) << d.Pav
-					<< setw(20) <<"----"<<setw(20)<< setprecision(2) << fixed << d.med << "\n";
+ {
+		for (auto& d : grupe) {
+			cout << left << setw(20) << d.Vard << setw(20) << d.Pav;
+			if (ivestis == "0")	cout<< setw(20) << setprecision(2) << fixed << d.GP <<"----\n";
+			else  cout<< setw(20) <<"----"<<setw(20)<< setprecision(2) << fixed << d.med << "\n";
 			}
 		}
 	}
