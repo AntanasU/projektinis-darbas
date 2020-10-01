@@ -17,6 +17,7 @@ using std::setprecision;
 using std::fixed;
 using std::rand;
 using std::left;
+using std::ifstream;
 
 struct studentas {
 	string Vard = "", Pav = "", ivestis = "";
@@ -144,7 +145,7 @@ int main()
 	cout << "Failo kuri norit nuskaityti pavadinimas (jei jis kursiokai.txt galite tiesiog spausti 0): ";
 	cin >> pav;
 	if (pav == "0") pav = "kursiokai.txt";
-	std::ifstream file(pav);
+	ifstream file(pav);
 	if (file.good()) {
 		cout << "Failas surastas!" << endl;
 		int nd;
@@ -160,9 +161,9 @@ int main()
 		int h;
 		h = 100;
 		file.unsetf(std::ios_base::skipws);
-		int b = std::count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n');
-		std::cout << "Studentu skaicius faile: " << b << endl;
-		std::ifstream file(pav);
+		int b = count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n');
+		cout << "Studentu skaicius faile: " << b << endl;
+		ifstream file(pav);
 		file.ignore(10000, '\n');
 		for (int j = 0; j < b; j++) {
 			file >> stud.Vard >> stud.Pav;
@@ -171,7 +172,7 @@ int main()
 				stud.nd.push_back(nd);
 			}
 			file >> stud.egz;
-			std::sort(stud.nd.begin(), stud.nd.end());
+			sort(stud.nd.begin(), stud.nd.end());
 			int c;
 			c = stud.nd.size();
 			if (c != 0) {
@@ -194,7 +195,7 @@ int main()
 		}
 	}
 	else cout << "Ivestas failas nebuvo rastas" << endl;
-	}
+	
 	std::sort(grupe.begin(), grupe.end(), Tvarkymas);
 	string ivestis = "";
 	cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
@@ -207,21 +208,22 @@ int main()
 			<<setw(20)<<"Galutinis (med)";
 		cout << "-------------------------------------------------------\n";
 
-	if (ivestis == "0") {
-		for (auto& d : grupe) {
-			cout << left
-				<< setw(20) << d.Vard
-				<< setw(20) << d.Pav
-				<< setw(20) << setprecision(2) << fixed << d.GP 
-				<< setw(20)<<"----\n";
+		if (ivestis == "0") {
+			for (auto& d : grupe) {
+				cout << left
+					<< setw(20) << d.Vard
+					<< setw(20) << d.Pav
+					<< setw(20) << setprecision(2) << fixed << d.GP 
+					<< setw(20)<<"----\n";
+			}
 		}
-	}
-	else  {
-		for (auto& d : grupe) {
-			cout << left
-				<< setw(20) << d.Vard
-				<< setw(20) << d.Pav
-				<< setw(20) <<"----"<<setw(20)<< setprecision(2) << fixed << d.med << "\n";
+		else  {
+			for (auto& d : grupe) {
+				cout << left
+					<< setw(20) << d.Vard
+					<< setw(20) << d.Pav
+					<< setw(20) <<"----"<<setw(20)<< setprecision(2) << fixed << d.med << "\n";
+			}
 		}
 	}
 	cout << endl;
