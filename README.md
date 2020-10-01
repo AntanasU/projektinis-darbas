@@ -17,7 +17,7 @@ Rimas       Kurtinaitis  y.yy               y.yy
 ## programos komentaras
 - įvedus norimą studentų skaičių, nebus galima jo keisti. Vadinasi negalima viduryje duomenų įvedimo persigalvoti ir nebevesti arba vesti daugiau nei galima studentų duomenų.
 - kiekvienam studentui yra galimybė duomenis arba rašyti pačiam arba kad jie būtų generuojami atsitiktinai (išskyrus studento vardą ir pavardę).
-- visų studentū namų darbų kiekis yra ribotas iki 20 namų darbų, tačiau gali būti ir mažiau. Nėra prašoma įvesti namų darbų kiekio, vedama tol kol yra noro.
+- visų studentū namų darbų kiekis yra ribotas iki 30 namų darbų, tačiau gali būti ir mažiau. Nėra prašoma įvesti namų darbų kiekio, vedama tol kol yra noro.
 - kiekvienam studentui yra galimybė pasirinkti ar galutinis balas bus skaičiuojamas su mediana ar su vidurkiu.
 
 ### programa veikia tiek kaupiant namų darbus į masyvą (vektoriai su masyvais) tiek į vektorių (vektoriai su vektoriais)
