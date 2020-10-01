@@ -145,10 +145,7 @@ int main()
 	string vardai, pavardes, temp, egzaminas;
 	vector<string> nd;
 	int m;
-	cout << "Failo kuri norit nuskaityti pavadinimas (jei jis kursiokai.txt galite tiesiog spausti 0): ";
-	cin >> pav;
-	if (pav == "0") pav = "kursiokai.txt";
-	ifstream file(pav);
+	ifstream file("kursiokai.txt");
 	if (file.good()) {
 		file >> vardai >> pavardes >> temp;
 		while (temp != "Egz.") {
@@ -157,6 +154,7 @@ int main()
 		}
 		egzaminas = temp;
 		m = nd.size();
+		stud.nd.reserve(m);
 		while (!file.eof()) {
 			studentas stud;
 			file >> stud.Vard >> stud.Pav;
@@ -181,6 +179,7 @@ int main()
 				stud.GP = bendras / m;
 				stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
 			}
+			grupe.reserve(grupe.capacity() + 1);
 			grupe.push_back(stud);
 			stud.nd.clear();
 		}
