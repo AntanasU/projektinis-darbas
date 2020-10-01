@@ -161,7 +161,7 @@ int main()
 		int h;
 		h = 100;
 		file.unsetf(std::ios_base::skipws);
-		int b = count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n');
+		int b = (count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n'))-1;
 		cout << "Studentu skaicius faile: " << b << endl;
 		ifstream file(pav);
 		file.ignore(10000, '\n');
@@ -206,7 +206,7 @@ int main()
 			<< setw(20) << "Pavarde"
 			<< setw(20)<<"Galutinis (vid) "
 			<<setw(20)<<"Galutinis (med)";
-		cout << "-------------------------------------------------------\n";
+		cout << "\n-------------------------------------------------------------------------------\n";
 
 		if (ivestis == "0") {
 			for (auto& d : grupe) {
@@ -214,7 +214,7 @@ int main()
 					<< setw(20) << d.Vard
 					<< setw(20) << d.Pav
 					<< setw(20) << setprecision(2) << fixed << d.GP 
-					<< setw(20)<<"----\n";
+					<<"----\n";
 			}
 		}
 		else  {
