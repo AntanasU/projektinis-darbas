@@ -9,6 +9,5 @@ int main()
 		ne_is_failo();
 	else is_failo("kursiokai.txt");
 	cout << endl;
-	char a;
-	cin >> a;
+	system("PAUSE");
 }
