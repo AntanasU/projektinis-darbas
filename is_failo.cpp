@@ -3,7 +3,7 @@
 bool Tvarkymas(const studentas& pirmas, const studentas& antras) {
 	return pirmas.Vard < antras.Vard;
 }
-void ne_is_failo(string failo_pav) {
+void is_failo(string failo_pav) {
 	vector<studentas> grupe;
 	studentas stud;
 	string pav = "";
