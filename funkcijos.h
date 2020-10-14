@@ -21,11 +21,12 @@ using std::left;
 using std::ifstream;
 
 struct studentas {
-	string Vard = "", Pav = "", ivestis = "";
-	int  egz = 0;
+	string Vard = "", Pav = "";
+	int  egz;
 	vector<int>nd;
-	float GP = 0, med = 0;
+	float GP = 0, med;
 };
 
-void ne_is_failo();
+bool Tvarkymas(const studentas& a, const studentas& b);
 void is_failo(string failo_pav);
+void ne_is_failo();
