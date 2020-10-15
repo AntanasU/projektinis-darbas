@@ -8,3 +8,6 @@
 
 # problema:
 - su labai dideliais duomenimis (10 milijonų) programa sugeba sukurti duomenų failą, bet kai jau reikia vykdyti kitus veiksmus, programa užlūžta :(
+
+# išvedimo pavyzdys:
+![alt text](sparta.png)
