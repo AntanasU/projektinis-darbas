@@ -1,9 +1,14 @@
-#include"funkcijos.h"
-#include "kurimas.h"
+#include"bendra.h"
 
 int main()
 {
-	failo_kurimas(5, 100, "naujas_failas");
-	is_failo("naujas_failas", "vargsiukai.txt", "kietekai.txt");
-	system("PAUSE");
+	string a = "";
+	cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
+	cin >> a;
+
+	bendra(a, 5, 1000);
+	bendra(a, 5, 10000);
+	bendra(a, 5, 100000);
+	bendra(a, 5, 1000000);
+	bendra(a, 5, 10000000);
 }

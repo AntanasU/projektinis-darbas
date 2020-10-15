@@ -8,6 +8,7 @@
 #include<random>
 #include <numeric>      
 #include <fstream>
+#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -29,4 +30,4 @@ struct studentas {
 	vector<int>nd;
 	float GP = 0, med;
 };
-void is_failo(string duomenys, string isvedimas1, string isvedimas2);
+void is_failo(string ivestis, string duomenys, string isvedimas1, string isvedimas2);

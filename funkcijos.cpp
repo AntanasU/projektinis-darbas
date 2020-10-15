@@ -1,8 +1,5 @@
 #include"funkcijos.h"
 
-bool Tvarkymas(const studentas& pirmas, const studentas& antras) {
-	return pirmas.Vard < antras.Vard;
-}
 void isvedimas(vector<studentas> a, string ivestis, string isvedimas) {
 
 	ofstream f1(isvedimas);
@@ -19,7 +16,7 @@ void isvedimas(vector<studentas> a, string ivestis, string isvedimas) {
 	a.clear();
 	f1.close();
 };
-void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
+void is_failo(string ivestis, string duomenys, string isvedimas1, string isvedimas2) {
 	vector<studentas> grupe;
 	studentas stud;
 	string pav = "";
@@ -31,10 +28,8 @@ void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
 		if (!file.good()) {
 			throw duomenys;
 		}
-		string ivestis = "";
-		cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
-		cin >> ivestis;
 
+		auto start = std::chrono::high_resolution_clock::now();
 		file >> vardai >> pavardes >> temp;
 		while (temp != "Egz.") {
 			nd.push_back(temp);
@@ -71,24 +66,38 @@ void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
 					stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
 				}
 			}
-			grupe.reserve(grupe.capacity() + 1);
 			grupe.push_back(stud);
 			stud.nd.clear();
+
 		}
-		//sort(grupe.begin(), grupe.end(), Tvarkymas);
+		std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+		cout <<grupe.size()-1<<" (namu darbu: "<<m<<") failo nuskaitymo laikas: "
+			<< diff.count() << endl;
+
 		vector<studentas> kietekai;
 		vector<studentas> vargseliai;
 		kietekai.reserve(grupe.capacity());
 		vargseliai.reserve(grupe.capacity());
+
+		start = std::chrono::high_resolution_clock::now();
 
 		for (auto& d : grupe) {
 			if (d.GP < 5.0)
 				vargseliai.push_back(d);
 			else kietekai.push_back(d);
 		}
+		diff = std::chrono::high_resolution_clock::now()-start;
+		cout <<grupe.size()-1<<" (namu darbu: "<<m<<") failo duomenu surusiavimas i kietekus ir vargselius : " 
+			<< diff.count() << endl;
+		
+		start = std::chrono::high_resolution_clock::now();
 
 		isvedimas(vargseliai, ivestis, isvedimas1);
 		isvedimas(kietekai, ivestis, isvedimas2);
+
+		diff = std::chrono::high_resolution_clock::now() - start;
+		cout << grupe.size() - 1 << " (namu darbu: " << m << ") duomenu isvedimas i du failus : " 
+			<< diff.count() << endl;
 
 	}
 

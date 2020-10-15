@@ -1,4 +1,4 @@
 #pragma once
 #include"funkcijos.h"
 
-void failo_kurimas(int nd_kiekis, int eilutes, string failo_pav);
+void failo_kurimas(int nd_kiekis, int eilutes);
