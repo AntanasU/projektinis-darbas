@@ -27,6 +27,5 @@ struct studentas {
 	float GP = 0, med;
 };
 
-bool Tvarkymas(const studentas& a, const studentas& b);
 void is_failo(string failo_pav);
 void ne_is_failo();
