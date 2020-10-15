@@ -3,31 +3,44 @@
 bool Tvarkymas(const studentas& pirmas, const studentas& antras) {
 	return pirmas.Vard < antras.Vard;
 }
-void isvedimas(vector<studentas> a, string ivestis) {
-	cout << left << setw(20) << "Vardas " << setw(20) << "Pavarde"
-		<< setw(20) << "Galutinis (vid) " << setw(20) << "Galutinis (med)";
-	cout << "\n-------------------------------------------------------------------------------\n";
+void isvedimas(vector<studentas> a, string ivestis, string isvedimas1, string isvedimas2) {
 
-	{
-		for (auto& d : a) {
-			cout << left << setw(20) << d.Vard << setw(20) << d.Pav;
-			if (ivestis == "0")	cout << setw(20) << setprecision(2) << fixed << d.GP << "----\n";
-			else  cout << setw(20) << "----" << setw(20) << setprecision(2) << fixed << d.GP << "\n";
-		}
+	ofstream f1(isvedimas1);
+	ofstream f2(isvedimas2);
+
+	f1 << left << setw(20) << "Vardas " << setw(20) << "Pavarde";
+	f2 << left << setw(20) << "Vardas " << setw(20) << "Pavarde";
+	if (ivestis == "0") {
+		f1 << setw(20) << "Galutinis (vid) " << endl;
+		f2 << setw(20) << "Galutinis (vid) " << endl;
+	}
+	else {
+		f1 << setw(20) << "Galutinis (med)" << endl;
+		f2 << setw(20) << "Galutinis (med)" << endl;
+	}
+
+	for (auto& d : a) {
+		if (d.GP < 5.0)
+			f1 << left << setw(20) << d.Vard << setw(20) << d.Pav << setw(6) << d.GP << endl;
+		else
+			f2 << left << setw(20) << d.Vard << setw(20) << d.Pav << setw(6) << d.GP << endl;
 	}
 	a.clear();
+	f1.close();
+	f2.close();
+
 };
-void is_failo(string failo_pav) {
+void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
 	vector<studentas> grupe;
 	studentas stud;
 	string pav = "";
 	string vardai, pavardes, temp, egzaminas;
 	vector<string> nd;
 	int m;
-	ifstream file(failo_pav);
+	ifstream file(duomenys);
 	try {
 		if (!file.good()) {
-			throw failo_pav;
+			throw duomenys;
 		}
 		string ivestis = "";
 		cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
@@ -74,7 +87,7 @@ void is_failo(string failo_pav) {
 			stud.nd.clear();
 		}
 		sort(grupe.begin(), grupe.end(), Tvarkymas);
-		isvedimas(grupe, ivestis);
+		isvedimas(grupe, ivestis, isvedimas1, isvedimas2);
 	}
 
 	catch (string pav) {

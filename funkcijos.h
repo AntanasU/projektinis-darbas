@@ -29,4 +29,4 @@ struct studentas {
 	vector<int>nd;
 	float GP = 0, med;
 };
-void is_failo(string failo_pav);
+void is_failo(string duomenys, string isvedimas1, string isvedimas2);
