@@ -121,47 +121,51 @@ void is_failo(string failo_pav) {
 	vector<string> nd;
 	int m;
 	ifstream file(failo_pav);
-	if (file.good()) {
-		file >> vardai >> pavardes >> temp;
-		while (temp != "Egz.") {
-			nd.push_back(temp);
-			file >> temp;
+	try {
+		if (!file.good()) {
+			throw failo_pav;
 		}
-		egzaminas = temp;
-		m = nd.size();
-		stud.nd.reserve(m);
-		while (!file.eof()) {
-			studentas stud;
-			file >> stud.Vard >> stud.Pav;
-			double studpaz;
-			for (int i = 0; i < m; i++) {
-				file >> studpaz;
-				stud.nd.push_back(studpaz);
+			file >> vardai >> pavardes >> temp;
+			while (temp != "Egz.") {
+				nd.push_back(temp);
+				file >> temp;
 			}
-			file >> stud.egz;
-			if (m != 0) {
-				if (m % 2 == 1)
-					stud.med = 0.4 * stud.nd[m / 2] + 0.6 * stud.egz;
-				else
-					stud.med = (stud.nd[m / 2 - 1] + stud.nd[m / 2]) / 2 * 0.4 + 0.6 * stud.egz;
+			egzaminas = temp;
+			m = nd.size();
+			stud.nd.reserve(m);
+			while (!file.eof()) {
+				studentas stud;
+				file >> stud.Vard >> stud.Pav;
+				double studpaz;
+				for (int i = 0; i < m; i++) {
+					file >> studpaz;
+					stud.nd.push_back(studpaz);
+				}
+				file >> stud.egz;
+				if (m != 0) {
+					if (m % 2 == 1)
+						stud.med = 0.4 * stud.nd[m / 2] + 0.6 * stud.egz;
+					else
+						stud.med = (stud.nd[m / 2 - 1] + stud.nd[m / 2]) / 2 * 0.4 + 0.6 * stud.egz;
+				}
+				if (m == 0) {
+					stud.GP = stud.egz * 0.6;
+				}
+				else {
+					float bendras = 0;
+					bendras = accumulate(stud.nd.begin(), stud.nd.end(), 0);
+					stud.GP = bendras / m;
+					stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
+				}
+				grupe.reserve(grupe.capacity() + 1);
+				grupe.push_back(stud);
+				stud.nd.clear();
 			}
-			if (m == 0) {
-				stud.GP = stud.egz * 0.6;
-			}
-			else {
-				float bendras = 0;
-				bendras = accumulate(stud.nd.begin(), stud.nd.end(), 0);
-				stud.GP = bendras / m;
-				stud.GP = stud.GP * 0.4 + 0.6 * stud.egz;
-			}
-			grupe.reserve(grupe.capacity() + 1);
-			grupe.push_back(stud);
-			stud.nd.clear();
+		sort(grupe.begin(), grupe.end(), Tvarkymas);
+		isvedimas(grupe);
 		}
+
+	catch (string pav) {
+		cout << pav << " failas nerastas arba negalima atidaryti \n";
 	}
-
-	else cout << "Ivestas failas nebuvo rastas" << endl;
-
-	sort(grupe.begin(), grupe.end(), Tvarkymas);
-	isvedimas(grupe);
 }
