@@ -3,32 +3,21 @@
 bool Tvarkymas(const studentas& pirmas, const studentas& antras) {
 	return pirmas.Vard < antras.Vard;
 }
-void isvedimas(vector<studentas> a, string ivestis, string isvedimas1, string isvedimas2) {
+void isvedimas(vector<studentas> a, string ivestis, string isvedimas) {
 
-	ofstream f1(isvedimas1);
-	ofstream f2(isvedimas2);
+	ofstream f1(isvedimas);
 
 	f1 << left << setw(20) << "Vardas " << setw(20) << "Pavarde";
-	f2 << left << setw(20) << "Vardas " << setw(20) << "Pavarde";
-	if (ivestis == "0") {
-		f1 << setw(20) << "Galutinis (vid) " << endl;
-		f2 << setw(20) << "Galutinis (vid) " << endl;
-	}
-	else {
+	if (ivestis == "0") 	
+		f1 << setw(20) << "Galutinis (vid)" << endl;
+	else					
 		f1 << setw(20) << "Galutinis (med)" << endl;
-		f2 << setw(20) << "Galutinis (med)" << endl;
-	}
 
-	for (auto& d : a) {
-		if (d.GP < 5.0)
+	for (auto& d : a)
 			f1 << left << setw(20) << d.Vard << setw(20) << d.Pav << setw(6) << d.GP << endl;
-		else
-			f2 << left << setw(20) << d.Vard << setw(20) << d.Pav << setw(6) << d.GP << endl;
-	}
+
 	a.clear();
 	f1.close();
-	f2.close();
-
 };
 void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
 	vector<studentas> grupe;
@@ -86,8 +75,21 @@ void is_failo(string duomenys, string isvedimas1, string isvedimas2) {
 			grupe.push_back(stud);
 			stud.nd.clear();
 		}
-		sort(grupe.begin(), grupe.end(), Tvarkymas);
-		isvedimas(grupe, ivestis, isvedimas1, isvedimas2);
+		//sort(grupe.begin(), grupe.end(), Tvarkymas);
+		vector<studentas> kietekai;
+		vector<studentas> vargseliai;
+		kietekai.reserve(grupe.capacity());
+		vargseliai.reserve(grupe.capacity());
+
+		for (auto& d : grupe) {
+			if (d.GP < 5.0)
+				vargseliai.push_back(d);
+			else kietekai.push_back(d);
+		}
+
+		isvedimas(vargseliai, ivestis, isvedimas1);
+		isvedimas(kietekai, ivestis, isvedimas2);
+
 	}
 
 	catch (string pav) {
