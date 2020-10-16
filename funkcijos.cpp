@@ -70,6 +70,7 @@ void is_failo(string ivestis, string duomenys, string isvedimas1, string isvedim
 			stud.nd.clear();
 
 		}
+		file.close();
 		std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
 		cout <<grupe.size()-1<<" (namu darbu: "<<m<<") failo nuskaitymo laikas: "
 			<< diff.count() << endl;

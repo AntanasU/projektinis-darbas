@@ -8,7 +8,7 @@ int main()
 	int b;
 	cout << "kiek namu darbu turi studentai? ";
 	cin >> b;
-	while (cin.fail()|| b<0) 
+	while (cin.fail() || b<0) 
 	{
 		cout << "klaida, iveskite skaiciu  ";
 		cin.clear();
