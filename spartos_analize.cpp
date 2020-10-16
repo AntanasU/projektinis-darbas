@@ -5,10 +5,19 @@ int main()
 	string a = "";
 	cout << "norint skaiciuoti galutini pazymi su vidurkiu spauskite 0, jei su mediana bet kuri kita mygtuma: ";
 	cin >> a;
+	int b;
+	cout << "kiek namu darbu turi studentai? ";
+	cin >> b;
+	while (cin.fail()) {
+		cout << "klaida, iveskite skaiciu  ";
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> b;
+	}
 
-	bendra(a, 5, 1000);
-	bendra(a, 5, 10000);
-	bendra(a, 5, 100000);
-	bendra(a, 5, 1000000);
-	bendra(a, 5, 10000000);
+	bendra(a, b, 1000);
+	bendra(a, b, 10000);
+	bendra(a, b, 100000);
+	bendra(a, b, 1000000);
+	bendra(a, b, 10000000);
 }
