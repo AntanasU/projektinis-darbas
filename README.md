@@ -11,6 +11,7 @@
 # pastaba:
 - su labai dideliais duomenimis (10 milijonų) programa gali užlūžti :( (bet gali ir neužlūžti :D )
 - programos veikimas užima daug vietos, vien sukuriami failai užima virš 1,15GB duomenų:
+
 ![alt text](atmintis.png)
 
 
