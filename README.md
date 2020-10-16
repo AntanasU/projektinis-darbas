@@ -8,8 +8,8 @@
 - yra spartos analizė.
 - skaičiuojama su skirtingais duomenų kiekiais (1k, 10k, 100k, 1mil, 10mil*).
 
-# problema:
-- su labai dideliais duomenimis (10 milijonų) programa sugeba sukurti duomenų failą, bet kai jau reikia vykdyti kitus veiksmus, programa užlūžta :(
+# pastaba:
+- su labai dideliais duomenimis (10 milijonų) programa gali užlūžti :( (bet gali ir neužlūžti :D )
 
 # išvedimo pavyzdys:
 ![alt text](sparta.png)
