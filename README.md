@@ -1,5 +1,7 @@
 # veikimas
 - programa sukuria duomenų failą su nustatytais parametrais (studentų skaičius, namų darbų kiekis).
+- galima pasirinkti ar galutinis pažymys bus skaičiuojamas su vidurkiu ar mediana.
+- galima pasirinkti kiek namų darbų turės studentai.
 - programa automatiškai sugeneruoja failų pavadinimus pagal tai kiek yra studentų.
 - studentai pagal galutinį pažymį išskirstomi į dvi grupes >5: "vargšelis", <="kietekas".
 - į rezultatų failus išvedami "kietekai" ir "vargšeliai".
