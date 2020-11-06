@@ -5,3 +5,4 @@ testavimas buvo altiktas kompiuteriu, kurio parametrai yra tokie:
 - 8 GB RAM
 - SSD 
 ## išvedimo pavyzdys
+![alt text](rezultatai.png)
