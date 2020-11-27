@@ -164,14 +164,25 @@ void V_greitas(string ivestis, string duomenys, string isvedimas1, string isvedi
 		vargseliai.reserve(grupe.capacity());
 
 		start = std::chrono::high_resolution_clock::now();
-
-		for (auto& d : grupe) {
+		
+		/*for (auto& d : grupe) {
 			if (d.GP < 5.0)
 			{
 				vargseliai.push_back(d);
-				grupe.erase(d);
+				//grupe.pop_back();
+				//grupe.erase(d);
+			}
+		}*/
+
+		/*for (int i = 0; i < grupe.size(); i++)
+		{
+			if (grupe[i].GP < 5.0) {
+				vargseliai.push_back(grupe[i]);
 			}
 		}
+		grupe.erase(remove_if(grupe.begin(), grupe.end(),[](studentas x) {return x.GP < 5.0;}), grupe.end());
+		*/
+
 		diff = std::chrono::high_resolution_clock::now() - start;
 		cout << grupe.size() - 1 << " (namu darbu: " << m << ") failo duomenu surusiavimas i kietekus ir vargselius : "
 			<< diff.count() << endl;
