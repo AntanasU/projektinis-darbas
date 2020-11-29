@@ -1,7 +1,6 @@
 #include "kurimas.h"
 
-void failo_kurimas(int nd_kiekis, int eilutes) {
-	string pav = to_string(eilutes) + ".txt";
+void failo_kurimas(int nd_kiekis, int eilutes, string pav) {
 	ofstream naujas_failas(pav);
 
 	naujas_failas << left << setw(16) << "Vardas" << setw(16) << "Pavarde";

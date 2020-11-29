@@ -24,6 +24,9 @@ using std::left;
 using std::ifstream;
 using std::ofstream;
 using std::to_string;
+using std::remove;
+using std::remove_if;
+using std::remove_copy_if;
 
 struct studentas {
 	string Vard = "", Pav = "";

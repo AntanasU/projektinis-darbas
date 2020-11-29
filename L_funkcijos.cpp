@@ -16,6 +16,7 @@ void isvedimas(list<studentas> a, string ivestis, string isvedimas) {
 	a.clear();
 	f1.close();
 };
+
 void L_letas(string ivestis, string duomenys, string isvedimas1, string isvedimas2) {
 	list<studentas> grupe;
 	studentas stud;
@@ -72,7 +73,7 @@ void L_letas(string ivestis, string duomenys, string isvedimas1, string isvedima
 		}
 		file.close();
 		std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
-		cout << "--- --- --- L I S T A I --- --- ---" << endl;
+		cout << "\n --- --- --- L I S T A I --- --- ---" << endl;
 		cout << grupe.size() - 1 << " (namu darbu: " << m << ") failo nuskaitymo laikas: "
 			<< diff.count() << endl;
 
@@ -166,19 +167,21 @@ void L_greitas(string ivestis, string duomenys, string isvedimas1, string isvedi
 
 		start = std::chrono::high_resolution_clock::now();
 
+		int grupes_dydis = grupe.size() - 1;
+		list<studentas>::iterator it = grupe.begin();
 		for (auto& d : grupe) {
 			if (d.GP < 5.0)
-			{
 				vargseliai.push_back(d);
-				grupe.remove(d);
-			}
 		}
+		grupe.erase(remove_if(grupe.begin(), grupe.end(), [](studentas x) {
+				return x.GP < 5.0; }), grupe.end());
+
 		diff = std::chrono::high_resolution_clock::now() - start;
-		cout << grupe.size() - 1 << " (namu darbu: " << m << ") failo duomenu surusiavimas i kietekus ir vargselius : "
+		cout << grupes_dydis << " (namu darbu: " << m << ") failo duomenu surusiavimas i kietekus ir vargselius : "
 			<< diff.count() << endl;
 
 		isvedimas(vargseliai, ivestis, isvedimas1);
-		isvedimas(grupe, ivestis, isvedimas2);
+		
 	}
 
 	catch (string pav) {

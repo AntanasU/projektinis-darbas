@@ -18,13 +18,13 @@ int main()
 
 	letas(a, b, 1000);
 	greitas(a, b, 1000);
-	/*letas(a, b, 10000);
+	letas(a, b, 10000);
 	greitas(a, b, 10000); 
 	letas(a, b, 100000);
 	greitas(a, b, 100000);
-	letas(a, b, 1000000);
-	greitas(a, b, 1000000)
-	letas(a, b, 10000000)
-	greitas(a, b, 10000000);*/
-
+	//letas(a, b, 1000000);
+	//greitas(a, b, 1000000);
+	//letas(a, b, 10000000);
+	//greitas(a, b, 10000000);
+	system("PAUSE");
 }

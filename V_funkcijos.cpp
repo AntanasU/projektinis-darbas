@@ -1,4 +1,4 @@
-#include"funkcijos.h"
+﻿#include"funkcijos.h"
 
 void isvedimas(vector<studentas> a, string ivestis, string isvedimas) {
 
@@ -100,6 +100,7 @@ void V_letas(string ivestis, string duomenys, string isvedimas1, string isvedima
 		cout << pav << " failas nerastas arba negalima atidaryti \n";
 	}
 }
+
 void V_greitas(string ivestis, string duomenys, string isvedimas1, string isvedimas2) {
 	vector<studentas> grupe;
 	studentas stud;
@@ -164,31 +165,29 @@ void V_greitas(string ivestis, string duomenys, string isvedimas1, string isvedi
 		vargseliai.reserve(grupe.capacity());
 
 		start = std::chrono::high_resolution_clock::now();
-		
-		/*for (auto& d : grupe) {
-			if (d.GP < 5.0)
-			{
-				vargseliai.push_back(d);
-				//grupe.pop_back();
-				//grupe.erase(d);
-			}
-		}*/
 
-		/*for (int i = 0; i < grupe.size(); i++)
-		{
-			if (grupe[i].GP < 5.0) {
-				vargseliai.push_back(grupe[i]);
+		int grupes_dydis = grupe.size() - 1;
+		
+			for (int i = 0; i < grupe.size(); i++){
+				if (grupe[i].GP < 5.0) {
+					vargseliai.push_back(grupe[i]);
+				}
 			}
-		}
-		grupe.erase(remove_if(grupe.begin(), grupe.end(),[](studentas x) {return x.GP < 5.0;}), grupe.end());
-		*/
+			grupe.erase(remove_if(grupe.begin(), grupe.end(),[](studentas x) {
+				return x.GP < 5.0;	}), grupe.end());
+				
+
+		/*		galima greitesnė altrnatyva, tačiau man ji neveikia :(
+		remove_copy_if(grupe.begin(), grupe.end(),
+			vargseliai.begin(), [](studentas x) { return x.GP < 5.0; });
+			*/
+
 
 		diff = std::chrono::high_resolution_clock::now() - start;
-		cout << grupe.size() - 1 << " (namu darbu: " << m << ") failo duomenu surusiavimas i kietekus ir vargselius : "
+		cout << grupes_dydis << " (namu darbu: " << m << ") failo duomenu surusiavimas i kietekus ir vargselius : "
 			<< diff.count() << endl;
 
 		isvedimas(vargseliai, ivestis, isvedimas1);
-		isvedimas(grupe, ivestis, isvedimas2);
 	}
 
 	catch (string pav) {
