@@ -19,7 +19,7 @@ Programa atlieką tuos pačius skaičiavimus kaip ir praeitoje versijoje, tik sk
   - 1,000,000 duomenų
  ![alt text](4.png)
   - 10,000,000 duomenų
- ![alt text](5.png)
+ ![alt text](51.png)
  ## Išvados
  - duomenų nuskaitymas į vektorius užtrunka greičiau nei į listus
  - greituoju variantu, paradoksaliai, užtrunka ilgiau surušiuoti į "vargšiukus" ir "kietekus", nei lėtuoju variantu, tiek su vektoriais tiek su listais (neaišku dėl ko, bet versijoje su 10,000,000  greitojo varianto rūšiavimas su listais užtruko trumpiau nei su lėtuoju variantu)
