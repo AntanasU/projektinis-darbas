@@ -7,6 +7,8 @@ Programa atlieką tuos pačius skaičiavimus kaip ir praeitoje versijoje, tik sk
  - naudojant listus, kuriant tik vieną naują "vargšiukų" listą ir tuos "vargšiukus" pašalinant iš pradinio listo, taip pradinis listas tampa "kietekais"
  ## Instrukcijos
  Yra dvi funkcijos: greita ir lėta. Kiekvienoje iš jų yra realizacija su vektoriais ir su listais.
+ ## Struktūra
+ kurimas.cpp faile yra failų generavimas. L_funkcijos.cpp faile yra programos veikimas su listais (greitas veikimas- L_greitas ir lėtas veikimas- L_letas). V_funkcijos.cpp faile yra programos veikimas su vektoriais (greitas- V_greitas ir lėtas- V_letas). bendra.cpp faile yra vektorių ir listų veikimo "apjungimas" tiek greitu, tiek lėtu variantais. v1_0.cpp faile yra main funkcija.
  ## Pastabos
  Kadangi visi realizavimai yra pateikti viename .cpp faile, tai programos veikimas su kiekvienu duomenų dydžiu (1k, 10k, 100k, 1m, 10m), sukuria po 3 failus versijose, kur kuriami 2 nauji konteineriai ir 2 failai, kur kuriamas tik vienas failas ir šalinami perkelti duomenys. Taigi norint sėkmingai įvykdyti visas programos realizacijas reikalinga nemažai laisvos atminties. Taip pat kadangi atliekama nemažai veiksmų, tai norint viską paskaičiuot reikalinga ir nemažai laiko (man visas programos veikimas užtruko apie 24 minutes)
  ## Testavimo rezultatai
