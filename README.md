@@ -1,4 +1,5 @@
 # veikimas
+[atgal į master](https://github.com/AntanasU/projektinis-darbas)
 - programa sukuria duomenų failą su nustatytais parametrais (studentų skaičius, namų darbų kiekis).
 - galima pasirinkti ar galutinis pažymys bus skaičiuojamas su vidurkiu ar mediana.
 - galima pasirinkti kiek namų darbų turės studentai.
