@@ -1,4 +1,5 @@
 # v1.0
+[atgal į master](https://github.com/AntanasU/projektinis-darbas)
 ## Veikimas
 Programa atlieką tuos pačius skaičiavimus kaip ir praeitoje versijoje, tik skirtingais būdais:
  - naudojant vektorius, skirstant studentus į du naujai sukuriamus vektorius
@@ -27,4 +28,3 @@ Programa atlieką tuos pačius skaičiavimus kaip ir praeitoje versijoje, tik sk
  - greituoju variantu, paradoksaliai, užtrunka ilgiau surušiuoti į "vargšiukus" ir "kietekus", nei lėtuoju variantu, tiek su vektoriais tiek su listais (neaišku dėl ko, bet versijoje su 10,000,000  greitojo varianto rūšiavimas su listais užtruko trumpiau nei su lėtuoju variantu)
  - visas programos veikimas greituoju veikimu, tiek su listais, tiek su vektoriais užtrunka kur kas greičiau nei lėtuoju variantu. Tai ypač gerai su dideliais duomenų kiekisis (ypač su listais).
  - su vektoriais, skirtumas tarp greito ir lėto veikimo yra mažesnis nei skirtumas tarp greito ir lėto veikimo su listais. Su vektoriais skirtumas yra iki 2 kartų, o su listais su 10,000,000 duomenų beveik 10 kartų.
- 
