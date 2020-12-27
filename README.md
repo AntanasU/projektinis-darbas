@@ -1,4 +1,5 @@
 # v0.2
+[atgal į master](https://github.com/AntanasU/projektinis-darbas)
 ## programos veikimas:
 - programa skaičiuoja pasirinkto failo duomenis
 ## reikalavimai:
