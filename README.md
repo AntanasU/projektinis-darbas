@@ -5,4 +5,4 @@ objektinio programavimo užduoties versijos:\
 [v0.3](https://github.com/AntanasU/projektinis-darbas/tree/v0.3)\
 [v0.4](https://github.com/AntanasU/projektinis-darbas/tree/v0.4)\
 [v0.5](https://github.com/AntanasU/projektinis-darbas/tree/v0.5)\
-[v1.0](https://github.com/AntanasU/projektinis-darbas/tree/1.0)\
+[v1.0](https://github.com/AntanasU/projektinis-darbas/tree/1.0)
